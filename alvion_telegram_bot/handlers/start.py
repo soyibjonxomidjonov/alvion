@@ -10,7 +10,7 @@ from database.text_shablon import StartTexts
 from aiogram.types import WebAppInfo, KeyboardButton
 from aiogram.types import MenuButtonWebApp, WebAppInfo
 
-from alvion_telegram_bot.database import ADMIN_WEBSITE_URL
+from alvion_telegram_bot.database.urls import ADMIN_WEBSITE_URL
 
 
 @dp.message_handler(commands=['start'], state='*')
