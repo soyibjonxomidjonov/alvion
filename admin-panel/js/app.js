@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   TaskFlow Admin — Main App Initializer
+   Alvion O'quv Markazi — Admin Panel App Initializer
    ═══════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -59,5 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
     window.Sidebar.updateUser();
   }
 
-  // Setup global smooth scrolling (lenis fallback if we wanted, but native CSS used)
+  // 6. Initialize Mobile Navigation (bottom nav + drawer)
+  if (window.auth.isAuthenticated()) {
+    window.mobileNav.init();
+  }
+
+  // After login — also init mobile nav
+  window.addEventListener('auth:login', () => {
+    window.mobileNav.init();
+  });
 });

@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   TaskFlow Admin — Auth Module
+   Alvion O'quv Markazi — Auth Module
    ═══════════════════════════════════════════════════════════ */
 
 class AuthManager {
@@ -15,8 +15,10 @@ class AuthManager {
   }
 
   async login(phone_number, password) {
-    this._user = { phone_number: 'admin' };
-    return { access: 'dummy-token' };
+    const data = await window.api.login(phone_number, password);
+    this._user = { phone_number };
+    window.dispatchEvent(new CustomEvent('auth:login'));
+    return data;
   }
 
   logout() {

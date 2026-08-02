@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   TaskFlow Admin — Sidebar Component
+   Alvion O'quv Markazi — Admin Panel Sidebar
    ═══════════════════════════════════════════════════════════ */
 
 class Sidebar {
@@ -26,11 +26,21 @@ class Sidebar {
     this.container.innerHTML = `
       <div class="sidebar-header">
         <div class="sidebar-logo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4-9 4-9-4 9-4z"/><path d="M3 10v4l9 4 9-4v-4"/><path d="M3 14v4l9 4 9-4v-4"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+            <!-- A letter -->
+            <path d="M5 20 L10 5 L12 5 L7.5 20Z" fill="white" fill-opacity="0.95"/>
+            <path d="M19 20 L14 5 L12 5 L16.5 20Z" fill="white" fill-opacity="0.95"/>
+            <!-- Gold diagonal -->
+            <path d="M12 5 L16.5 20 L14.8 20 L11 9Z" fill="#c9a84c" fill-opacity="0.9"/>
+            <!-- Crossbar -->
+            <path d="M7.8 14 L16.2 14 L15.7 15.8 L8.3 15.8Z" fill="white" fill-opacity="0.85"/>
+            <!-- Book lines -->
+            <path d="M3 21.5 Q12 19.5 21 21.5" stroke="white" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.7"/>
+          </svg>
         </div>
         <div class="sidebar-brand">
-          <div class="sidebar-brand-name">TaskFlow</div>
-          <div class="sidebar-brand-sub">Admin Panel</div>
+          <div class="sidebar-brand-name">Alvion</div>
+          <div class="sidebar-brand-sub">O'quv Markazi</div>
         </div>
       </div>
       

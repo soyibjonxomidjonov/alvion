@@ -1,0 +1,264 @@
+/* ═══════════════════════════════════════════════════════════
+   Alvion O'quv Markazi — Mobile Bottom Navigation
+   Telefon va Telegram Web App uchun maxsus optimizatsiya
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Bottom Nav (faqat mobil/WebApp da ko'rinadi) ── */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: calc(var(--z-sidebar) + 5);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-primary);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-shadow: 0 -4px 20px rgba(13, 20, 40, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .bottom-nav {
+  box-shadow: 0 -4px 24px rgba(0, 0, 10, 0.4);
+}
+
+.bottom-nav-inner {
+  display: flex;
+  align-items: stretch;
+  height: 58px;
+}
+
+/* ── Bottom Nav Item ── */
+.bottom-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--text-tertiary);
+  font-size: 9.5px;
+  font-family: var(--font-body);
+  font-weight: var(--fw-medium);
+  padding: 6px 4px;
+  border-radius: 0;
+  transition: color var(--duration-fast) var(--ease-out-quint);
+  position: relative;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.bottom-nav-item:active {
+  transform: scale(0.93);
+  transition: transform 80ms ease;
+}
+
+.bottom-nav-item.active {
+  color: var(--accent);
+}
+
+.bottom-nav-item.active .bottom-nav-icon {
+  background: var(--accent-muted);
+}
+
+.bottom-nav-item .bottom-nav-icon {
+  width: 36px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background var(--duration-fast) var(--ease-out-quint);
+  position: relative;
+}
+
+.bottom-nav-item svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out-quint);
+}
+
+.bottom-nav-item.active svg {
+  transform: scale(1.1);
+}
+
+.bottom-nav-label {
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* ── Badge (arizalar uchun) ── */
+.bottom-nav-badge {
+  position: absolute;
+  top: -2px;
+  right: 3px;
+  background: var(--danger);
+  color: #fff;
+  font-size: 8.5px;
+  font-weight: var(--fw-bold);
+  padding: 1px 5px;
+  border-radius: var(--radius-full);
+  min-width: 16px;
+  line-height: 1.4;
+  text-align: center;
+  display: none;
+  border: 1.5px solid var(--bg-secondary);
+}
+
+/* ── "Ko'proq" drawer overlay ── */
+.more-drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  z-index: calc(var(--z-sidebar) + 8);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  animation: fadeIn var(--duration-base) var(--ease-out-quint);
+}
+
+.more-drawer-overlay.active {
+  display: block;
+}
+
+/* ── "Ko'proq" bottom sheet ── */
+.more-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: calc(var(--z-sidebar) + 10);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  padding: var(--space-4) var(--space-4) calc(var(--space-4) + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(100%);
+  transition: transform var(--duration-slow) var(--ease-out-quint);
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.more-drawer.active {
+  transform: translateY(0);
+}
+
+.more-drawer-handle {
+  width: 36px;
+  height: 4px;
+  background: var(--border-primary);
+  border-radius: var(--radius-full);
+  margin: 0 auto var(--space-4);
+}
+
+.more-drawer-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: var(--fs-xs);
+  margin-bottom: var(--space-2);
+  padding: 0 var(--space-2);
+}
+
+.more-drawer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.more-drawer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  border: none;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  font-family: var(--font-body);
+  font-weight: var(--fw-medium);
+  text-align: center;
+  transition: all var(--duration-fast) var(--ease-out-quint);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.more-drawer-item:active {
+  transform: scale(0.95);
+  background: var(--accent-muted);
+  color: var(--accent);
+}
+
+.more-drawer-item svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.more-drawer-item .drawer-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-fast);
+}
+
+.more-drawer-item:active .drawer-icon-wrap {
+  background: var(--accent-muted);
+}
+
+/* ── Main content padding when bottom nav is visible ── */
+.has-bottom-nav .main-content {
+  padding-bottom: calc(var(--space-6) + 58px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE ACTIVATION
+   ═══════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .bottom-nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  body.has-bottom-nav {
+    --bottom-nav-height: calc(58px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ── Telegram WebApp spetsifik ── */
+.tg-web-app .bottom-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}

@@ -31,4 +31,4 @@ BOT_USER_URL = BASE_URL+"bot_users/"
 REGISTER_USER_URL = BASE_URL+"registeruser/"
 
 
-ADMIN_WEBSITE_URL = "https://juice-structure-elated.ngrok-free.dev"
+ADMIN_WEBSITE_URL = "https://alvion.scholarmap.uz/"

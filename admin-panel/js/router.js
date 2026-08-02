@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   TaskFlow Admin — SPA Router (Hash-based)
+   Alvion O'quv Markazi — Admin SPA Router (Hash-based)
    ═══════════════════════════════════════════════════════════ */
 
 class Router {
@@ -118,14 +118,14 @@ class Router {
       '/settings': { title: 'Sozlamalar', sub: 'Tizim sozlamalari' },
     };
 
-    const info = titles[path] || { title: 'TaskFlow', sub: '' };
+    const info = titles[path] || { title: 'Alvion', sub: '' };
 
     const titleEl = document.getElementById('header-title');
     const subEl = document.getElementById('header-subtitle');
     if (titleEl) titleEl.textContent = info.title;
     if (subEl) subEl.textContent = info.sub;
 
-    document.title = `${info.title} — TaskFlow Admin`;
+    document.title = `${info.title} — Alvion Admin`;
   }
 }
 

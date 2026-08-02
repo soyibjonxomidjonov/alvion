@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   TaskFlow Admin — Layout (Sidebar + Header + Main)
+   Alvion O'quv Markazi — Layout (Sidebar + Header + Main)
    ═══════════════════════════════════════════════════════════ */
 
 /* ── App Shell ── */
@@ -41,11 +41,12 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--accent), #a78bfa);
+  background: linear-gradient(135deg, #1a2a5e, #0f1a3d);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(26, 42, 94, 0.35);
 }
 
 .sidebar-logo svg {
