@@ -21,7 +21,7 @@ def get_id(url, data_id):
         if response.status_code == 200:
             return response.json()
     except Exception as e:
-        return f"Error: {e}, \n{response.text}"
+        return f"Error: {e}"
 
 
 def create(url, data):
