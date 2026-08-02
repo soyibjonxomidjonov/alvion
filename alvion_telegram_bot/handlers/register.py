@@ -112,7 +112,4 @@ Tez orada operatorlarimiz siz bilan bog'lanadi 📞""", parse_mode='HTML', disab
 
 
     logging.info(f"DEBUG: response before send = {repr(response)}")
-
     await bot.send_message(chat_id=..., text=response)
-
-
