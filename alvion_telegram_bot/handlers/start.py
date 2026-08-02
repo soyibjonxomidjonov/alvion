@@ -8,8 +8,9 @@ from keyboards.mainmenu import reply_main_menu
 from bot import bot
 from database.text_shablon import StartTexts
 from aiogram.types import WebAppInfo, KeyboardButton
+from aiogram.types import MenuButtonWebApp, WebAppInfo
 
-
+from alvion_telegram_bot.database import ADMIN_WEBSITE_URL
 
 
 @dp.message_handler(commands=['start'], state='*')
@@ -32,9 +33,10 @@ async def start(msg: types.Message, state: FSMContext):
         )
     else:
         if user[0]['is_admin']:
+            await bot.set_chat_menu_button(menu_button=MenuButtonWebApp(text="Dashboard", web_app=WebAppInfo(url=ADMIN_WEBSITE_URL)))
             await msg.answer(
                 text=StartTexts.TEXT.format(msg.from_user.first_name),
-                reply_markup=admin_reply_menu,
+                reply_markup=reply_main_menu,
                 parse_mode='HTML',
                 disable_web_page_preview=True
             )

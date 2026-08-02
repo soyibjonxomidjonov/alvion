@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/TaskFlow/.venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.12 virtualenv at D:\D_Desktop\alvion\TaskFlow\.venv" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.10 virtualenv at D:\D_Desktop\alvion\alvion_telegram_bot\.venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
