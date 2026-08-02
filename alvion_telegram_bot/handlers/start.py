@@ -8,9 +8,7 @@ from keyboards.mainmenu import reply_main_menu
 from bot import bot
 from database.text_shablon import StartTexts
 from aiogram.types import WebAppInfo, KeyboardButton, MenuButtonDefault
-from aiogram.types import MenuButtonWebApp, WebAppInfo
 
-from database.urls import ADMIN_WEBSITE_URL
 
 
 @dp.message_handler(commands=['start'], state='*')
@@ -25,7 +23,6 @@ async def start(msg: types.Message, state: FSMContext):
         data = {"chat_id": msg.from_user.id, "username": username}
         print(f"{create(BOT_USER_URL, data)} foydalanuvchi yaratildi")
 
-        # 1. Yangi foydalanuvchida ham menyuni DEFAULT ga o'tkazamiz!
         await bot.set_chat_menu_button(
             chat_id=msg.from_user.id,
             menu_button=MenuButtonDefault()
@@ -39,14 +36,7 @@ async def start(msg: types.Message, state: FSMContext):
         )
     else:
         if user[0]['is_admin']:
-            # 2. Faqat admin uchun Web App
-            await bot.set_chat_menu_button(
-                chat_id=msg.from_user.id,
-                menu_button=MenuButtonWebApp(
-                    text="Dashboard",
-                    web_app=WebAppInfo(url=ADMIN_WEBSITE_URL)
-                )
-            )
+
             await msg.answer(
                 text=StartTexts.TEXT.format(msg.from_user.first_name),
                 reply_markup=admin_reply_menu,
@@ -54,11 +44,7 @@ async def start(msg: types.Message, state: FSMContext):
                 disable_web_page_preview=True
             )
         else:
-            # 3. Oddiy (mavjud) foydalanuvchilar uchun oddiy menyu
-            await bot.set_chat_menu_button(
-                chat_id=msg.from_user.id,
-                menu_button=MenuButtonDefault()
-            )
+
             await msg.answer(
                 text=StartTexts.TEXT.format(msg.from_user.first_name),
                 reply_markup=reply_main_menu,

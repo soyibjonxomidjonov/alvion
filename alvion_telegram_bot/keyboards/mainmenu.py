@@ -65,11 +65,8 @@ admin_reply_menu = ReplyKeyboardMarkup(
 
         [
             KeyboardButton(text="🌐 Ijtimoiy tarmoqlar"),
+            KeyboardButton(text="🌐 Admin panelni ochish", web_app=WebAppInfo(url=ADMIN_WEBSITE_URL))
         ],
-
-        [
-            KeyboardButton(text="🌐 Admin panelni ochish", web_app=WebAppInfo(url=ADMIN_WEBSITE_URL)),
-        ]
     ],
     resize_keyboard=True
 )
