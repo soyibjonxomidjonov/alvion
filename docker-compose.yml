@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  bot:
+    build: ./alvion_telegram_bot
+    container_name: telegram_bot
+    command: python main.py
+    volumes:
+      - ./alvion_telegram_bot:/app
+    working_dir: /app
+    env_file:
+      - ./alvion_telegram_bot/.env
+    depends_on:
+      - django
+    restart: unless-stopped
+
+  django:
+    build: ./TaskFlow
+    container_name: django_app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DJANGO_SETTINGS_MODULE=config.settings.production
+    ports:
+      - "8000:8000"
+    command: python manage.py runserver 0.0.0.0:8000 --insecure
+    volumes:
+      - ./TaskFlow:/app
+    working_dir: /app
+    env_file:
+      - ./TaskFlow/.env
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+      image: postgres:15
+      container_name: postgres_db
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      environment:
+        - POSTGRES_DB=taskflow_db
+        - POSTGRES_USER=taskflow_user
+        - POSTGRES_PASSWORD=root
+      ports:
+        - "5432:5432"
+      restart: unless-stopped
+
+  frontend:
+    build: ./admin-panel
+    container_name: react_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - DJANGO_URL=http://django:8000
+    depends_on:
+      - django
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

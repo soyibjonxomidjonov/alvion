@@ -1,0 +1,52 @@
+from aiogram import Bot, Dispatcher, executor, types
+
+BOT_TOKEN = "BOT_TOKENINGIZNI_YOZING"
+WEB_APP_URL = "https://your-domain.com/webapp" # HTTPS bo'lishi shart!
+
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher(bot)
+
+@dp.message_handler(commands=['start'])
+async def cmd_start(message: types.Message):
+    # Inline tugmaga Web App biriktirish
+    inline_web_app_kb = types.InlineKeyboardMarkup(inline_keyboard=[
+        [
+            types.InlineKeyboardButton(
+                text="🚀 Web App-ni ochish",
+                web_app={"url": WEB_APP_URL} # <-- shu joyi muhim
+            )
+        ]
+    ])
+
+    await message.answer("Tugmani bosing:", reply_markup=inline_web_app_kb)
+
+if __name__ == '__main__':
+    executor.start_polling(dp)
+
+
+
+
+ reply_web_app_kb = types.ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            types.KeyboardButton(
+                text="📱 Ilovani ochish",
+                web_app={"url": WEB_APP_URL} # <-- reply keyboard uchun ham shu usul
+            )
+        ]
+    ],
+    resize_keyboard=True
+)
+
+@dp.message_handler(commands=['app'])
+async def open_app(message: types.Message):
+    await message.answer("Menu orqali kiring:", reply_markup=reply_web_app_kb)
+
+
+
+@dp.message_handler(content_types=types.ContentType.WEB_APP_DATA)
+async def web_app_handler(message: types.Message):
+    # Web App'dan kelgan ma'lumot string ko'rinishida bo'ladi
+    received_data = message.web_app_data.data
+
+    await message.answer(f"Web App'dan ma'lumot qabul qilindi: {received_data}")

@@ -1,0 +1,137 @@
+from symtable import Class
+
+
+class StartTexts:
+    TEXT = """
+👋 <b>Assalomu alaykum, {}!</b>
+
+<b>ALVION</b> ta'lim markazi botiga xush kelibsiz! 🎓
+
+Bu yerda siz:
+📚 Kurslarimiz bilan tanishasiz
+📅 Dars jadvalini ko'rasiz
+💰 Narx va chegirmalarni bilib olasiz
+👤 Ro'yxatdan o'tasiz
+
+Quyidagi menyudan kerakli bo'limni tanlang 👇
+"""
+
+
+class CourseTexts:
+    TEXT = """
+📚 <b>ALVION kurslari</b>
+
+Sizga mos darajani tanlang — har biri haqida batafsil ma'lumot beramiz 👇    
+"""
+
+
+    COURSE = """
+🎓 <b>{}</b> kursi
+
+⏳ Davomiyligi: <b>{}</b>
+📆 Haftasiga: <b>{} kun</b> dars
+🎯 Kirish darajasi: <b>{}</b>
+🏁 Kursdan keyingi natija: <b>{}</b>
+💰 Oylik to'lov: <b>{} so'm</b>
+
+Ro'yxatdan o'tish uchun 👤 <b>Ro'yxatdan o'tish</b> tugmasini bosing!"""
+
+
+
+class LessonTable:
+    TEXT = """
+📅 <b>Dars jadvali</b>
+
+Quyidagi vaqtlardan birini tanlang 👇
+"""
+
+
+    LESSON_INFO_TEXT = """
+🗓 <b>{}</b> guruh
+
+🪑 Bo'sh joylar: <b>{} ta</b>
+📆 Boshlanish sanasi: <b>{}</b>
+
+Joylar tez to'lib qolmoqda — hoziroq ro'yxatdan o'ting! 🚀    
+"""
+
+
+
+class Prices:
+    TEXT = """
+💰 <b>Narxlar</b>
+
+Qaysi ma'lumot kerak? 👇
+• 💵 Oylik to'lov
+• 🎁 Chegirmalar
+• 🔥 Aksiyalar"""
+
+    CHEGIRMA_TEXT = """
+🎁 <b>Faol chegirmalar</b>
+
+🏷 <b>{}</b> kursida <b>{}%</b> chegirma!
+
+📅 Boshlanish: {}
+⏰ Tugash: <b>{}</b>
+
+Imkoniyatni boy bermang! ⏳"""
+
+
+
+    AKSIYA_TEXT = """
+🔥 <b>«{}» aksiyasi</b>
+
+👥 <b>{}</b>"""
+
+    PAYMENT_METHODS = """💳 <b>To'lov usulini tanlang</b>
+
+Quyidagi banklardan birini tanlab, karta ma'lumotlarini olasiz 👇"""
+
+    PAYMENT_TEXT = """🏦 <b>{}</b>
+
+👤 Karta egasi: <b>{}</b>
+💳 Karta raqami: <code>{}</code>
+
+To'lovni amalga oshirib, chek rasmini adminlarga yuboring 🧾"""
+
+
+
+
+class Teacher:
+    TEXT = """
+👨‍🏫 <b>{}</b>
+
+💼 Kasbi: {}
+📚 Dars beradi: <b>{}</b>
+⏳ Tajribasi: <b>{}</b> 
+{}
+Bizning tajribali ustozlarimiz bilan ishonchli natijaga erishing! 💪"""
+
+
+
+
+class CONTACT:
+    TEXT ="""
+📞 <b>Bog'lanish</b>
+
+📱 Telefon: <b>+998 90 123 45 67</b>
+💬 Telegram: @username
+📍 Manzil: Toshkent sh., Chilonzor tumani, 5-mavze
+🗺 <a href="https://maps.google.com">Xaritada ko'rish</a>
+⏰ Ish vaqti: Dush – Shanba (09:00 – 18:00)
+
+Savolingiz bo'lsa, bemalol qo'ng'iroq qiling! 😊"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+

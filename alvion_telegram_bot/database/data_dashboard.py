@@ -1,0 +1,53 @@
+import requests
+
+from database.urls import TEST_RESULT_URL
+
+BASE_URL = "http://django:8000/v1/"
+
+
+def get_all(url):
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            return response.json()
+    except Exception as e:
+        return f"Error: {e}"
+
+
+
+def get_id(url, data_id):
+    try:
+        response = requests.get(f"{url}{data_id}/")
+        if response.status_code == 200:
+            return response.json()
+    except Exception as e:
+        return f"Error: {e}, \n{response.text}"
+
+
+def create(url, data):
+    try:
+        response = requests.post(url, json=data)
+        print("Response Text:", response.text)
+        if response.status_code == 201:
+            return "OK"
+    except Exception as e:
+        return f"Error: {e}"
+
+
+def update_id(url, data_id, data):
+    try:
+        response = requests.patch(f"{url}{data_id}/", json=data)
+        if response.status_code == 200:
+            return "Ok"
+    except Exception as e:
+        return f"Error: {e}"
+
+def delete_id(url, data_id):
+    try:
+        response = requests.delete(f"{url}{data_id}/")
+        if response.status_code == 204:
+            return "OK"
+    except Exception as e:
+        return f"Error: {e}"
+
+

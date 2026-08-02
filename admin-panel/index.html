@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>TaskFlow Admin</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="shortcut icon" href="./favicon.svg">
+  
+  <!-- Telegram WebApp Script -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/variables.css?v=3">
+  <link rel="stylesheet" href="./css/base.css?v=3">
+  <link rel="stylesheet" href="./css/components.css?v=5">
+  <link rel="stylesheet" href="./css/layout.css?v=3">
+  <link rel="stylesheet" href="./css/pages.css?v=4">
+</head>
+<body>
+
+  <!-- ================= LOGIN PAGE ================= -->
+  <div class="login-container" id="login-page">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4-9 4-9-4 9-4z"/><path d="M3 10v4l9 4 9-4v-4"/><path d="M3 14v4l9 4 9-4v-4"/></svg>
+        </div>
+        <h2 class="login-title">TaskFlow</h2>
+        <p class="login-subtitle">Boshqaruv paneliga xush kelibsiz</p>
+      </div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label" for="login-phone">Telefon raqam</label>
+          <div style="position: relative;">
+            <div style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-tertiary);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <input type="text" id="login-phone" class="form-input" required placeholder="+998 90 123 45 67" style="padding-left: 40px;">
+          </div>
+        </div>
+
+        <div class="form-group mb-6">
+          <label class="form-label" for="login-password">Parol</label>
+          <div style="position: relative;">
+            <div style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-tertiary);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <input type="password" id="login-password" class="form-input" required placeholder="••••••••" style="padding-left: 40px;">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Tizimga kirish</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= APP LAYOUT ================= -->
+  <div class="app-layout" id="app-layout" style="display: none;">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar-container"></aside>
+    <div class="sidebar-mobile-overlay"></div>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <header class="header" id="header-container"></header>
+      
+      <main class="main-content" id="main-content">
+        <!-- Dynamic content injected here -->
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="./js/utils/helpers.js?v=3"></script>
+  <script src="./js/utils/telegram.js?v=3"></script>
+  <script src="./js/utils/export.js?v=3"></script>
+  
+  <!-- Config: Backend URL (change this for production) -->
+  <script src="./config.js?v=3"></script>
+
+  <script src="./js/api.js?v=7"></script>
+  <script src="./js/auth.js?v=4"></script>
+  <script src="./js/router.js?v=4"></script>
+
+  <!-- Components -->
+  <script src="./js/components/toast.js?v=3"></script>
+  <script src="./js/components/modal.js?v=3"></script>
+  <script src="./js/components/table.js?v=4"></script>
+  <script src="./js/components/form.js?v=3"></script>
+  <script src="./js/components/stats-card.js?v=3"></script>
+  <script src="./js/components/header.js?v=3"></script>
+  <script src="./js/components/sidebar.js?v=3"></script>
+
+  <!-- Pages -->
+  <script src="./js/pages/dashboard.js?v=3"></script>
+  <script src="./js/pages/courses.js?v=3"></script>
+  <script src="./js/pages/lessons.js?v=3"></script>
+  <script src="./js/pages/teachers.js?v=3"></script>
+  <script src="./js/pages/prices.js?v=3"></script>
+  <script src="./js/pages/news.js?v=5"></script>
+  <script src="./js/pages/users.js?v=6"></script>
+  <script src="./js/pages/applications.js?v=3"></script>
+  <script src="./js/pages/tests.js?v=6"></script>
+  <script src="./js/pages/broadcast.js?v=4"></script>
+  <script src="./js/pages/settings.js?v=3"></script>
+
+  <!-- Initializer -->
+  <script src="./js/app.js?v=3"></script>
+</body>
+</html>
