@@ -1,3 +1,5 @@
+import logging
+
 import requests
 
 from database.urls import TEST_RESULT_URL
@@ -8,6 +10,7 @@ BASE_URL = "http://django:8000/v1/"
 def get_all(url):
     try:
         response = requests.get(url)
+        logging.info(f"Response status: {response.status_code}, text: {response.text}")
         if response.status_code == 200:
             return response.json()
         else:
@@ -20,6 +23,7 @@ def get_all(url):
 def get_id(url, data_id):
     try:
         response = requests.get(f"{url}{data_id}/")
+        logging.info(f"Response status: {response.status_code}, text: {response.text}")
         if response.status_code == 200:
             return response.json()
         else:
@@ -31,7 +35,7 @@ def get_id(url, data_id):
 def create(url, data):
     try:
         response = requests.post(url, json=data)
-        print("Response Text:", response.text)
+        logging.info(f"Response status: {response.status_code}, text: {response.text}")
         if response.status_code == 201:
             return "OK"
         else:
@@ -44,6 +48,7 @@ def create(url, data):
 def update_id(url, data_id, data):
     try:
         response = requests.patch(f"{url}{data_id}/", json=data)
+        logging.info(f"Response status: {response.status_code}, text: {response.text}")
         if response.status_code == 200:
             return "Ok"
         else:
@@ -54,6 +59,7 @@ def update_id(url, data_id, data):
 def delete_id(url, data_id):
     try:
         response = requests.delete(f"{url}{data_id}/")
+        logging.info(f"Response status: {response.status_code}, text: {response.text}")
         if response.status_code == 204:
             return "OK"
         else:
