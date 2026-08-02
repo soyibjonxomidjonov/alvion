@@ -99,13 +99,16 @@ async def get_comment(msg: types.Message, state: FSMContext):
   "chat_id": msg.from_user.id
 }
 
-    create(REGISTER_USER_URL, create_data)
+    response = create(REGISTER_USER_URL, create_data)
+    if response == "OK":
+        await msg.reply(text=f"""🎉 <b>Tabriklaymiz, {msg.from_user.first_name}!</b>
 
-    await msg.reply(text=f"""🎉 <b>Tabriklaymiz, {msg.from_user.first_name}!</b>
-
-Siz ALVION ta'lim markaziga muvaffaqiyatli ro'yxatdan o'tdingiz! ✅
+Siz ALVION ta'lim markaziga muvaffaqiyatli ro'yxatdan o'tdingiz!✅
 
 Tez orada operatorlarimiz siz bilan bog'lanadi 📞""", parse_mode='HTML', disable_web_page_preview=True)
-    await state.finish()
+        await state.finish()
+
+    else:
+        await msg.answer(text="Kechirasiz baza bilan bog'liq xatolik adminlarga murojat qilishingiz mumkun!")
 
 

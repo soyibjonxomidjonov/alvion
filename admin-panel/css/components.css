@@ -793,6 +793,7 @@
   background: none;
   cursor: pointer;
   white-space: nowrap;
+  flex-shrink: 0;
   position: relative;
   transition: color var(--duration-fast) var(--ease-in-out);
 }
