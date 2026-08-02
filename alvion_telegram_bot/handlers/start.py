@@ -23,7 +23,13 @@ async def start(msg: types.Message, state: FSMContext):
     if not user:
         username = msg.from_user.username
         data = {"chat_id": msg.from_user.id, "username": username}
-        print(f"{create(BOT_USER_URL, data)} foydalanucchi yartildi ")
+        print(f"{create(BOT_USER_URL, data)} foydalanuvchi yaratildi")
+
+        # 1. Yangi foydalanuvchida ham menyuni DEFAULT ga o'tkazamiz!
+        await bot.set_chat_menu_button(
+            chat_id=msg.from_user.id,
+            menu_button=MenuButtonDefault()
+        )
 
         await msg.answer(
             text=StartTexts.TEXT.format(msg.from_user.first_name),
@@ -33,9 +39,14 @@ async def start(msg: types.Message, state: FSMContext):
         )
     else:
         if user[0]['is_admin']:
+            # 2. Faqat admin uchun Web App
             await bot.set_chat_menu_button(
                 chat_id=msg.from_user.id,
-                menu_button=MenuButtonWebApp(text="Dashboard", web_app=WebAppInfo(url=ADMIN_WEBSITE_URL)))
+                menu_button=MenuButtonWebApp(
+                    text="Dashboard",
+                    web_app=WebAppInfo(url=ADMIN_WEBSITE_URL)
+                )
+            )
             await msg.answer(
                 text=StartTexts.TEXT.format(msg.from_user.first_name),
                 reply_markup=admin_reply_menu,
@@ -43,6 +54,7 @@ async def start(msg: types.Message, state: FSMContext):
                 disable_web_page_preview=True
             )
         else:
+            # 3. Oddiy (mavjud) foydalanuvchilar uchun oddiy menyu
             await bot.set_chat_menu_button(
                 chat_id=msg.from_user.id,
                 menu_button=MenuButtonDefault()
@@ -53,8 +65,6 @@ async def start(msg: types.Message, state: FSMContext):
                 parse_mode='HTML',
                 disable_web_page_preview=True
             )
-
-
 
 
 
