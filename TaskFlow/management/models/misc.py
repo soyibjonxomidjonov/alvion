@@ -25,7 +25,7 @@ class Course(models.Model):
 
 class RegisterUser(models.Model):
     full_name = models.CharField(max_length=250, null=False, blank=False)
-    phone_number = models.CharField(max_length=15, validators=[phone_regex])
+    phone_number = models.CharField(max_length=15)
     age = models.IntegerField()
     address = models.CharField(max_length=200)
     english_level = models.CharField(max_length=150)
