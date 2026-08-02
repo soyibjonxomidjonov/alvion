@@ -1,6 +1,6 @@
 
-# BASE_URL = "http://django:8000/v1/"
-BASE_URL = "http://backend.scholarmap.uz/v1/"
+BASE_URL = "http://django:8000/v1/"
+# BASE_URL = "http://backend.scholarmap.uz/v1/"
 
 
 
