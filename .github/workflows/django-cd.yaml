@@ -20,7 +20,7 @@ jobs:
             sudo chown -R ec2-user:ec2-user .        
             git reset --hard origin/main
             
-            if git diff HEAD~1 HEAD --name-only | grep -qE "requirements.txt|Dockerfile|docker-compose.yml"; then
+            if git diff HEAD~1 HEAD --name-only | grep -qE "requirements.txt|Dockerfile|docker-compose.yml|admin-panel/"; then
               docker-compose up -d --force-recreate --build
             else
               docker-compose up -d --force-recreate
