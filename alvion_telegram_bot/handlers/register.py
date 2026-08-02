@@ -1,3 +1,5 @@
+import logging
+
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
@@ -108,8 +110,9 @@ Siz ALVION ta'lim markaziga muvaffaqiyatli ro'yxatdan o'tdingiz!✅
 Tez orada operatorlarimiz siz bilan bog'lanadi 📞""", parse_mode='HTML', disable_web_page_preview=True)
         await state.finish()
 
-    else:
-        await bot.send_message(chat_id=7421875223, text=response)
-        await msg.answer(text="Kechirasiz baza bilan bog'liq xatolik adminlarga murojat qilishingiz mumkun!")
+
+    logging.info(f"DEBUG: response before send = {repr(response)}")
+
+    await bot.send_message(chat_id=..., text=response)
 
 
