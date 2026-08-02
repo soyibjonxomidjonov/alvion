@@ -5,7 +5,7 @@ class StartTexts:
     TEXT = """
 👋 <b>Assalomu alaykum, {}!</b>
 
-<b>ALVION</b> ta'lim markazi botiga xush kelibsiz! 🎓
+<b>ALVION</b> ta'lim markazi botiga xush kelibsiz!🎓
 
 Bu yerda siz:
 📚 Kurslarimiz bilan tanishasiz
@@ -13,7 +13,7 @@ Bu yerda siz:
 💰 Narx va chegirmalarni bilib olasiz
 👤 Ro'yxatdan o'tasiz
 
-Quyidagi menyudan kerakli bo'limni tanlang 👇
+Quyidagi menyudan kerakli bo'limni tanlang👇
 """
 
 
@@ -21,7 +21,7 @@ class CourseTexts:
     TEXT = """
 📚 <b>ALVION kurslari</b>
 
-Sizga mos darajani tanlang — har biri haqida batafsil ma'lumot beramiz 👇    
+Sizga mos darajani tanlang — har biri haqida batafsil ma'lumot beramiz👇    
 """
 
 
@@ -42,7 +42,7 @@ class LessonTable:
     TEXT = """
 📅 <b>Dars jadvali</b>
 
-Quyidagi vaqtlardan birini tanlang 👇
+Quyidagi vaqtlardan birini tanlang👇
 """
 
 
@@ -52,7 +52,7 @@ Quyidagi vaqtlardan birini tanlang 👇
 🪑 Bo'sh joylar: <b>{} ta</b>
 📆 Boshlanish sanasi: <b>{}</b>
 
-Joylar tez to'lib qolmoqda — hoziroq ro'yxatdan o'ting! 🚀    
+Joylar tez to'lib qolmoqda — hoziroq ro'yxatdan o'ting!🚀    
 """
 
 
@@ -61,7 +61,7 @@ class Prices:
     TEXT = """
 💰 <b>Narxlar</b>
 
-Qaysi ma'lumot kerak? 👇
+Qaysi ma'lumot kerak?👇
 • 💵 Oylik to'lov
 • 🎁 Chegirmalar
 • 🔥 Aksiyalar"""
@@ -74,7 +74,7 @@ Qaysi ma'lumot kerak? 👇
 📅 Boshlanish: {}
 ⏰ Tugash: <b>{}</b>
 
-Imkoniyatni boy bermang! ⏳"""
+Imkoniyatni boy bermang!⏳"""
 
 
 
@@ -85,14 +85,14 @@ Imkoniyatni boy bermang! ⏳"""
 
     PAYMENT_METHODS = """💳 <b>To'lov usulini tanlang</b>
 
-Quyidagi banklardan birini tanlab, karta ma'lumotlarini olasiz 👇"""
+Quyidagi banklardan birini tanlab, karta ma'lumotlarini olasiz👇"""
 
     PAYMENT_TEXT = """🏦 <b>{}</b>
 
 👤 Karta egasi: <b>{}</b>
 💳 Karta raqami: <code>{}</code>
 
-To'lovni amalga oshirib, chek rasmini adminlarga yuboring 🧾"""
+To'lovni amalga oshirib, chek rasmini adminlarga yuboring🧾"""
 
 
 
@@ -105,7 +105,7 @@ class Teacher:
 📚 Dars beradi: <b>{}</b>
 ⏳ Tajribasi: <b>{}</b> 
 {}
-Bizning tajribali ustozlarimiz bilan ishonchli natijaga erishing! 💪"""
+Bizning tajribali ustozlarimiz bilan ishonchli natijaga erishing!💪"""
 
 
 
@@ -120,7 +120,7 @@ class CONTACT:
 🗺 <a href="https://maps.google.com">Xaritada ko'rish</a>
 ⏰ Ish vaqti: Dush – Shanba (09:00 – 18:00)
 
-Savolingiz bo'lsa, bemalol qo'ng'iroq qiling! 😊"""
+Savolingiz bo'lsa, bemalol qo'ng'iroq qiling!😊"""
 
 
 
