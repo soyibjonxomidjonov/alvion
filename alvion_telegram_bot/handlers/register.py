@@ -91,17 +91,18 @@ async def get_comment(msg: types.Message, state: FSMContext):
     data = await state.get_data()
 
     create_data = {
-  "full_name": data['fullname'],
-  "phone_number": data['phone_number'],
-  "age": data['age'],
-  "address": data['address'],
-  "english_level": data['english_level'],
-  "convenient_time": data['time_convenience'],
-  "comment": data['comment'],
-  "chat_id": msg.from_user.id
-}
+        "full_name": data['fullname'],
+        "phone_number": data['phone_number'],
+        "age": data['age'],
+        "address": data['address'],
+        "english_level": data['english_level'],
+        "convenient_time": data['time_convenience'],
+        "comment": data['comment'],
+        "chat_id": msg.from_user.id
+    }
 
     response = create(REGISTER_USER_URL, create_data)
+
     if response == "OK":
         await msg.reply(text=f"""🎉 <b>Tabriklaymiz, {msg.from_user.first_name}!</b>
 
@@ -109,7 +110,9 @@ Siz ALVION ta'lim markaziga muvaffaqiyatli ro'yxatdan o'tdingiz!✅
 
 Tez orada operatorlarimiz siz bilan bog'lanadi 📞""", parse_mode='HTML', disable_web_page_preview=True)
         await state.finish()
-
-
-    logging.info(f"DEBUG: response before send = {repr(response)}")
-    await bot.send_message(chat_id=..., text=response)
+    else:
+        logging.error(f"Ro'yxatdan o'tishda xatolik: {response}")
+        await msg.reply(
+            text="❌ Ro'yxatdan o'tishda xatolik yuz berdi. Iltimos, /start bosib qaytadan urinib ko'ring.",
+            parse_mode='HTML'
+        )
