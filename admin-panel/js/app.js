@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         await window.auth.login(phone, pass);
         window.toast.success("Tizimga muvaffaqiyatli kirdingiz!");
         
-        // Agar gash o'zgarmasa (masalan oldindan /dashboard da turgan bo'lsa),
+        // Agar hash o'zgarmasa (masalan oldindan /dashboard da turgan bo'lsa),
         // interfeysni majburiy yangilaymiz:
         if (window.router.getCurrentPath() === '/dashboard') {
           window.router._onRouteChange();
@@ -67,5 +67,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // After login — also init mobile nav
   window.addEventListener('auth:login', () => {
     window.mobileNav.init();
+  });
+
+  // 7. Sidebar collapse state on resize (desktop only)
+  let _sidebarResizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(_sidebarResizeTimer);
+    _sidebarResizeTimer = setTimeout(() => {
+      // If resized to tablet, remove collapsed class (sidebar becomes icon-only via CSS)
+      if (window.innerWidth <= 1024) {
+        const sidebar = document.querySelector('.sidebar');
+        const mainWrapper = document.querySelector('.main-wrapper');
+        if (sidebar) sidebar.classList.remove('collapsed');
+        if (mainWrapper) mainWrapper.classList.remove('sidebar-collapsed');
+      } else {
+        // Re-apply saved collapsed state on desktop
+        if (window.Sidebar) {
+          window.Sidebar._applyCollapsedState();
+        }
+      }
+    }, 200);
   });
 });

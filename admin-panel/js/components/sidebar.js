@@ -1,10 +1,12 @@
 /* ═══════════════════════════════════════════════════════════
    Alvion O'quv Markazi — Admin Panel Sidebar
+   Cross-platform: Desktop collapse + Mobile overlay
    ═══════════════════════════════════════════════════════════ */
 
 class Sidebar {
   constructor() {
     this.container = document.getElementById('sidebar-container');
+    this.isCollapsed = localStorage.getItem('sidebar_collapsed') === 'true';
     this.links = [
       { path: '/dashboard', label: 'Bosh sahifa', icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>' },
       { path: '/courses', label: 'Kurslar', icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 8-4 8 4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4"/><path d="M18 5v17"/><path d="M6 5v17"/><circle cx="12" cy="9" r="2"/></svg>' },
@@ -42,13 +44,18 @@ class Sidebar {
           <div class="sidebar-brand-name">Alvion</div>
           <div class="sidebar-brand-sub">O'quv Markazi</div>
         </div>
+        <button class="sidebar-toggle" id="sidebar-toggle-btn" title="Sidebar" aria-label="Sidebar'ni yig'ish/yoyish">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
       </div>
       
       <div class="sidebar-nav">
         <div class="sidebar-section">
           <div class="sidebar-section-title">Asosiy menyu</div>
           ${this.links.map(link => `
-            <button class="sidebar-link" data-path="${link.path}" onclick="window.router.navigate('${link.path}')">
+            <button class="sidebar-link" data-path="${link.path}" onclick="window.router.navigate('${link.path}')" data-tooltip="${link.label}">
               ${link.icon}
               <span class="sidebar-link-text">${link.label}</span>
               ${link.badge ? '<span class="sidebar-link-badge" id="sidebar-app-badge" style="display:none">0</span>' : ''}
@@ -68,13 +75,39 @@ class Sidebar {
       </div>
     `;
 
+    // Apply saved collapsed state
+    this._applyCollapsedState();
+
     // Highlight current
     const currentPath = window.router.getCurrentPath();
     const currentLink = this.container.querySelector(`.sidebar-link[data-path="${currentPath}"]`);
     if (currentLink) currentLink.classList.add('active');
 
+    // Toggle button event
+    const toggleBtn = document.getElementById('sidebar-toggle-btn');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => this.toggleCollapse());
+    }
+
     // Fetch new applications count
     this.updateBadges();
+  }
+
+  toggleCollapse() {
+    this.isCollapsed = !this.isCollapsed;
+    localStorage.setItem('sidebar_collapsed', this.isCollapsed);
+    this._applyCollapsedState();
+  }
+
+  _applyCollapsedState() {
+    const sidebar = document.querySelector('.sidebar');
+    const mainWrapper = document.querySelector('.main-wrapper');
+
+    // Only apply on desktop (> 1024px)
+    if (window.innerWidth <= 1024) return;
+
+    if (sidebar) sidebar.classList.toggle('collapsed', this.isCollapsed);
+    if (mainWrapper) mainWrapper.classList.toggle('sidebar-collapsed', this.isCollapsed);
   }
 
   async updateBadges() {

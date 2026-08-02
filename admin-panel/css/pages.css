@@ -249,6 +249,22 @@
   color: var(--text-primary);
 }
 
+@media (max-width: 768px) {
+  .quick-actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quick-action-btn {
+    padding: var(--space-4) var(--space-3);
+  }
+}
+
+@media (max-width: 360px) {
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Recent items list */
 .recent-list {
   display: flex;
@@ -407,6 +423,18 @@
   padding-top: 0;
 }
 
+@media (max-width: 640px) {
+  .settings-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .settings-section {
+    padding: var(--space-4);
+  }
+}
+
 .settings-row-info {
   flex: 1;
   min-width: 0;
@@ -516,21 +544,20 @@
 }
 
 .test-result-bar-fill {
-  \n height: 100%;
-  \n border-radius: var(--radius-full);
-  \n transition: width var(--duration-slow) var(--ease-out-quint);
-  \n
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--duration-slow) var(--ease-out-quint);
 }
 
-\n\n.test-result-bar-fill.high {
+.test-result-bar-fill.high {
   background: var(--success);
 }
 
-\n.test-result-bar-fill.medium {
+.test-result-bar-fill.medium {
   background: var(--warning);
 }
 
-\n.test-result-bar-fill.low {
+.test-result-bar-fill.low {
   background: var(--danger);
 }
 

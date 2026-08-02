@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════════════════
    Alvion O'quv Markazi — Mobile Navigation Controller
    Telefon va Telegram Web App bottom navigation
+   Cross-platform: smart resize handling + Telegram detection
    ═══════════════════════════════════════════════════════════ */
 
 class MobileNav {
@@ -9,6 +10,7 @@ class MobileNav {
     this.moreDrawer = null;
     this.moreOverlay = null;
     this.isMoreOpen = false;
+    this._resizeTimer = null;
 
     // Bottom nav page → button ID mapping
     this.navMap = {
@@ -30,7 +32,7 @@ class MobileNav {
     if (!this.bottomNav) return;
 
     // Show bottom nav on mobile
-    this._showIfMobile();
+    this._updateVisibility();
 
     // Listen for route changes to update active state
     window.addEventListener('hashchange', () => this.updateActive());
@@ -43,30 +45,53 @@ class MobileNav {
 
     // Swipe down to close drawer
     this._initSwipeClose();
+
+    // Debounced resize listener
+    window.addEventListener('resize', () => {
+      clearTimeout(this._resizeTimer);
+      this._resizeTimer = setTimeout(() => {
+        this._updateVisibility();
+        // Also update sidebar collapsed state on resize
+        if (window.Sidebar) {
+          window.Sidebar._applyCollapsedState();
+        }
+      }, 150);
+    });
   }
 
-  _showIfMobile() {
+  _isTelegramWebApp() {
+    try {
+      const tg = window.Telegram?.WebApp;
+      // Telegram WebApp provides initData string when running inside Telegram
+      return tg && (tg.initData?.length > 0 || tg.initDataUnsafe?.user);
+    } catch {
+      return false;
+    }
+  }
+
+  _updateVisibility() {
+    if (!this.bottomNav) return;
+
     const isMobile = window.innerWidth <= 768;
-    const isTgWebApp = window.Telegram?.WebApp?.initData?.length > 0;
+    const isTgWebApp = this._isTelegramWebApp();
 
     if (isMobile || isTgWebApp) {
       this.bottomNav.style.display = 'flex';
       this.bottomNav.style.flexDirection = 'column';
       document.body.classList.add('has-bottom-nav');
-    }
 
-    // Also react to resize
-    window.addEventListener('resize', () => {
-      if (window.innerWidth <= 768) {
-        this.bottomNav.style.display = 'flex';
-        this.bottomNav.style.flexDirection = 'column';
-        document.body.classList.add('has-bottom-nav');
-      } else {
-        this.bottomNav.style.display = 'none';
-        document.body.classList.remove('has-bottom-nav');
+      // On Telegram WebApp: hide desktop sidebar entirely
+      if (isTgWebApp) {
+        document.body.classList.add('tg-web-app');
+      }
+    } else {
+      this.bottomNav.style.display = 'none';
+      document.body.classList.remove('has-bottom-nav');
+      // Close drawer if open on resize to desktop
+      if (this.isMoreOpen) {
         this.closeMore();
       }
-    });
+    }
   }
 
   updateActive() {
@@ -104,7 +129,7 @@ class MobileNav {
         badge.style.display = 'none';
       }
     } catch (e) {
-      // silent fail
+      // silent fail — not critical
     }
   }
 
@@ -148,29 +173,31 @@ class MobileNav {
 
     let startY = 0;
     let isDragging = false;
+    let currentY = 0;
 
     this.moreDrawer.addEventListener('touchstart', (e) => {
       startY = e.touches[0].clientY;
       isDragging = true;
+      currentY = 0;
+      this.moreDrawer.style.transition = 'none';
     }, { passive: true });
 
     this.moreDrawer.addEventListener('touchmove', (e) => {
       if (!isDragging) return;
       const deltaY = e.touches[0].clientY - startY;
       if (deltaY > 0) {
+        currentY = deltaY;
         this.moreDrawer.style.transform = `translateY(${deltaY}px)`;
-        this.moreDrawer.style.transition = 'none';
       }
     }, { passive: true });
 
-    this.moreDrawer.addEventListener('touchend', (e) => {
+    this.moreDrawer.addEventListener('touchend', () => {
       if (!isDragging) return;
       isDragging = false;
-      const deltaY = e.changedTouches[0].clientY - startY;
       this.moreDrawer.style.transition = '';
       this.moreDrawer.style.transform = '';
 
-      if (deltaY > 80) {
+      if (currentY > 80) {
         this.closeMore();
       }
     }, { passive: true });
