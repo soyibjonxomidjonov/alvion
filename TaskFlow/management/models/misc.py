@@ -32,7 +32,7 @@ class RegisterUser(models.Model):
     # qulay vaqt
     convenient_time = models.TextField()
     comment = models.TextField()
-    chat_id = models.IntegerField(null=True, unique=True)
+    chat_id = models.BigIntegerField(null=True, unique=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
