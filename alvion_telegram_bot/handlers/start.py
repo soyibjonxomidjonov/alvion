@@ -7,7 +7,7 @@ from aiogram.dispatcher import FSMContext
 from keyboards.mainmenu import reply_main_menu
 from bot import bot
 from database.text_shablon import StartTexts
-from aiogram.types import WebAppInfo, KeyboardButton
+from aiogram.types import WebAppInfo, KeyboardButton, MenuButtonDefault
 from aiogram.types import MenuButtonWebApp, WebAppInfo
 
 from database.urls import ADMIN_WEBSITE_URL
@@ -33,15 +33,20 @@ async def start(msg: types.Message, state: FSMContext):
         )
     else:
         if user[0]['is_admin']:
-            await bot.set_chat_menu_button(menu_button=MenuButtonWebApp(text="Dashboard", web_app=WebAppInfo(url=ADMIN_WEBSITE_URL)))
+            await bot.set_chat_menu_button(
+                chat_id=msg.from_user.id,
+                menu_button=MenuButtonWebApp(text="Dashboard", web_app=WebAppInfo(url=ADMIN_WEBSITE_URL)))
             await msg.answer(
                 text=StartTexts.TEXT.format(msg.from_user.first_name),
-                reply_markup=reply_main_menu,
+                reply_markup=admin_reply_menu,
                 parse_mode='HTML',
                 disable_web_page_preview=True
             )
         else:
-            # ← shu qism yetishmayapti
+            await bot.set_chat_menu_button(
+                chat_id=msg.from_user.id,
+                menu_button=MenuButtonDefault()
+            )
             await msg.answer(
                 text=StartTexts.TEXT.format(msg.from_user.first_name),
                 reply_markup=reply_main_menu,
