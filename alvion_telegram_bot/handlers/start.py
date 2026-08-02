@@ -14,6 +14,10 @@ from aiogram.types import WebAppInfo, KeyboardButton, MenuButtonDefault
 @dp.message_handler(commands=['start'], state='*')
 async def start(msg: types.Message, state: FSMContext):
     await state.finish()
+    await bot.set_chat_menu_button(
+        chat_id=msg.from_user.id,
+        menu_button=MenuButtonDefault()
+    )
 
     user = get_all(f"{BOT_USER_URL}?chat_id={msg.from_user.id}")
     print(user, "Bot ishga tushdi!")
