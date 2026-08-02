@@ -1,7 +1,7 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
-from bot import dp
+from bot import dp, bot
 from database import create, get_all
 from database.urls import REGISTER_USER_URL
 from keyboards.contact import contact_button
@@ -109,6 +109,7 @@ Tez orada operatorlarimiz siz bilan bog'lanadi 📞""", parse_mode='HTML', disab
         await state.finish()
 
     else:
+        await bot.send_message(chat_id=7421875223, text=response)
         await msg.answer(text="Kechirasiz baza bilan bog'liq xatolik adminlarga murojat qilishingiz mumkun!")
 
 
