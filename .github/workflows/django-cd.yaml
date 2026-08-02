@@ -25,8 +25,8 @@ jobs:
             else
               docker-compose up -d --force-recreate
             fi
-            docker-compose exec -T django python manage.py migrate
-            docker-compose exec -T django python manage.py collectstatic --noinput
+            docker-compose exec -T web python manage.py migrate
+            docker-compose exec -T web python manage.py collectstatic --noinput
 
             docker image prune -f
 
