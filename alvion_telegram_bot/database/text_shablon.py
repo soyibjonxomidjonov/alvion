@@ -28,7 +28,7 @@ Sizga mos darajani tanlang — har biri haqida batafsil ma'lumot beramiz👇
     COURSE = """
 🎓 <b>{}</b> kursi
 
-⏳ Davomiyligi: <b>{}</b>
+⏳ Davomiyligi: <b>{} oy</b>
 📆 Haftasiga: <b>{} kun</b> dars
 🎯 Kirish darajasi: <b>{}</b>
 🏁 Kursdan keyingi natija: <b>{}</b>
