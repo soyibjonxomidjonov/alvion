@@ -138,11 +138,14 @@ window.router.register('/teachers', async () => {
     const content = document.createElement('div');
     content.innerHTML = `
       <div style="margin-bottom: var(--space-4);">
-        <h4 style="margin-bottom: var(--space-2)">Yangi qo'shish</h4>
-        <div style="display:flex; gap: var(--space-2);">
-          <input type="text" id="cert-subject" class="form-input" placeholder="Fan (Masalan: IELTS)">
-          <input type="text" id="cert-level" class="form-input" placeholder="Daraja (Masalan: 8.0)">
-          <button class="btn btn-primary" id="btn-save-cert">Qo'shish</button>
+        <h4 style="margin-bottom: var(--space-3)">Yangi sertifikat</h4>
+        <div class="cert-add-row">
+          <input type="text" id="cert-subject" class="form-input" placeholder="Fan (masalan: IELTS)">
+          <input type="text" id="cert-level" class="form-input" placeholder="Daraja (masalan: 8.0)">
+          <button class="btn btn-primary" id="btn-save-cert">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            Qo'shish
+          </button>
         </div>
       </div>
       <h4>Mavjud sertifikatlar</h4>

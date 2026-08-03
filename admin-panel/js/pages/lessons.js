@@ -103,9 +103,9 @@ window.router.register('/lessons', async () => {
     const wrapper = document.createElement('div');
     wrapper.className = 'schedules-manager';
     wrapper.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:var(--space-3); flex-wrap:wrap; margin-bottom:var(--space-4); border-bottom: 1px solid var(--border-secondary); padding-bottom: var(--space-4);">
-        <p class="text-tertiary" style="font-size:var(--fs-sm); flex: 1; min-width: 200px;">Ushbu guruh dars bo'ladigan vaqtlar va bo'sh joylar sonini belgilang.</p>
-        <button class="btn btn-primary btn-sm" id="btn-add-schedule-inline" style="flex-shrink: 0; white-space: nowrap;">
+      <div class="schedules-manager-header">
+        <p>Ushbu guruh dars bo'ladigan vaqtlar va bo'sh joylar sonini belgilang.</p>
+        <button class="btn btn-primary btn-sm" id="btn-add-schedule-inline">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
           Jadval qo'shish
         </button>
