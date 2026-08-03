@@ -1075,7 +1075,7 @@
     max-height: 45vh;
   }
 }
-
+@media (max-width: 480px) {
   .question-header {
     flex-direction: column;
     align-items: flex-start;
@@ -1089,22 +1089,16 @@
 
 /* ══════════════════════════════════════════════════════════
    TABLE ACTION BUTTONS — Text labels
-   Desktop: icon-only. Mobile: icon + visible text.
    ══════════════════════════════════════════════════════════ */
 
-/* Desktop: Hide text label, show only icon */
 .table-action-btn .btn-action-label {
-  display: none;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  margin-left: 4px;
 }
 
-/* Mobile: Show text label next to icon */
+/* Mobile: full width buttons */
 @media (max-width: 768px) {
-  .table-action-btn .btn-action-label {
-    display: inline;
-    font-size: var(--fs-xs);
-    font-weight: var(--fw-medium);
-  }
-
   .table-action-btn {
     flex: 1;
     min-height: 44px;

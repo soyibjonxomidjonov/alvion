@@ -603,6 +603,12 @@
   vertical-align: middle;
 }
 
+.data-table td:last-child,
+.data-table td[data-label="Amallar"] {
+  max-width: none;
+  overflow: visible;
+}
+
 .data-table tbody tr {
   transition: background-color var(--duration-fast) var(--ease-in-out);
 }
