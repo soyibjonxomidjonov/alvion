@@ -47,4 +47,5 @@ class ChoiceViewSet(viewsets.ModelViewSet):
     serializer_class = ChoiceSerializerConfig
     # pagination_class = CustomPagination
     filter_backends = (django_filters.DjangoFilterBackend, filters.SearchFilter)
-    search_fields = ['question__id', 'phone_number']
+    search_fields = ['question__id']
+
