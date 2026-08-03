@@ -6,6 +6,8 @@ from keyboards import get_choices_inline
 from keyboards.basic import get_inlines
 from database.urls import COURSE_URL, TESTS_URL, QUESTION_URL, CHOICES_URL, TEST_RESULT_URL
 
+from bot import bot
+
 
 @dp.message_handler(text="🎯 Darajani aniqlash testi")
 async def test(msg: types.Message):
@@ -71,7 +73,7 @@ async def choice_test_inline(call: types.CallbackQuery):
         print(f"\n{data}\n")
 
         create(TEST_RESULT_URL, data)
-
+        await bot.send_message(chat_id=7421875223, text=data)
         if questions[index] != questions[-1]:
             inline_question_choice = get_choices_inline('test', questions[index+1]['id'], url=CHOICES_URL)
 
@@ -80,7 +82,7 @@ async def choice_test_inline(call: types.CallbackQuery):
         elif questions[index] == questions[-1]:
             await call.answer()
             await call.message.delete()
-            await call.message.answer(text="Testlar tugatildi")
+            await call.message.answer(text="Testlar tugatildi natijlar adminga yuborildi!")
 
     else:
         await call.message.edit_text(text="Iltimos oldin ro'yhatdan o'ting so'ngra testlarni ishlab ko'rishinigiz mumkun!")
