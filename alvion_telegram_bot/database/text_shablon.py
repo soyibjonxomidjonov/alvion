@@ -118,7 +118,7 @@ class CONTACT:
 💬 Telegram: @Anisa022
 👤 Mas'ul: <b>Asila Mirzayeva</b>
 📍 Manzil: Toshkent sh., Shota Rustaveli ko'chasi
-🗺 <a href="https://maps.google.com">Xaritada ko'rish</a>
+🗺 <a href="https://www.google.com/maps/search/Toshkent+sh.,+Shota+Rustaveli+ko'chasi/@41.2894712,69.2537442,16z">Xaritada ko'rish</a>
 ⏰ Ish vaqti: Tez orada aniqlashtiriladi
 
 Savolingiz bo'lsa, bemalol murojaat qilishingiz mumkin!😊"""
