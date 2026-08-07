@@ -114,13 +114,14 @@ class CONTACT:
     TEXT ="""
 📞 <b>Bog'lanish</b>
 
-📱 Telefon: <b>+998 90 123 45 67</b>
-💬 Telegram: @username
-📍 Manzil: Toshkent sh., Chilonzor tumani, 5-mavze
+📱 Telefon: <b>+998 93 424 75 79</b>
+💬 Telegram: @Anisa022
+👤 Mas'ul: <b>Asila Mirzayeva</b>
+📍 Manzil: Toshkent sh., Shota Rustaveli ko'chasi
 🗺 <a href="https://maps.google.com">Xaritada ko'rish</a>
-⏰ Ish vaqti: Dush – Shanba (09:00 – 18:00)
+⏰ Ish vaqti: Tez orada aniqlashtiriladi
 
-Savolingiz bo'lsa, bemalol qo'ng'iroq qiling!😊"""
+Savolingiz bo'lsa, bemalol murojaat qilishingiz mumkin!😊"""
 
 
 
